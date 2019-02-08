@@ -1,0 +1,67 @@
+{
+  "extends": "eslint-config-airbnb",
+  "rules": {
+    "arrow-parens": ["error", "as-needed"],
+    "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "functions": "ignore"
+    }],
+    "func-names": ["error", "always", { "generators": "never" }],
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": ["error", { "js": "never" }],
+    "import/no-unresolved": "off",
+    "max-len": ["error", { "code": 160, "ignoreUrls": true }],
+    "no-console": ["warn", { "allow": ["info", "error", "warn"] }],
+    "no-param-reassign": ["error", { "props": false }],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-shadow": "off",
+    "object-curly-newline": ["error", {
+      "ObjectExpression": { "consistent": true, "minProperties": 10 },
+      "ObjectPattern": { "multiline": true },
+      "ImportDeclaration": { "minProperties": 10 },
+      "ExportDeclaration": { "multiline": true, "minProperties": 3 }
+    }],
+    "operator-linebreak": ["error", "after", { "overrides": { ":": "before" } }],
+    "prefer-destructuring": ["error", {
+        "array": false,
+        "object": true
+      }, {
+      "enforceForRenamedProperties": false
+    }],
+    "import/no-named-as-default": "off",
+    "prefer-promise-reject-errors": "off",
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "labelAttributes": ["label"],
+      "controlComponents": ["Input"],
+      "depth": 3
+    }],
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/anchor-is-valid": "off"
+  },
+  "overrides": [
+    {
+      "files": ["*-test.js","*.spec.js"],
+      "rules": {
+        "max-len": ["error", { "code": 160, "ignoreUrls": true, "ignoreStrings": true }]
+      }
+    }
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "legacyDecorators": true
+    }
+  },
+  "plugins": [
+    "import",
+    "security"
+  ],
+  "settings": {
+    "import/ignore": ["node_modules", ".scss$"],
+    "import/resolve": {
+      "moduleDirectory": ["node_modules", "src"]
+    }
+  }
+}
