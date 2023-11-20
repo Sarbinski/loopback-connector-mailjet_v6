@@ -14,11 +14,29 @@ const MailjetConnector = function MailjetConnector(settings) {
   if (settings.apiKey && settings.apiSecret) {
     // Connection options
     if (settings.options) {
-      this.mailjet = Mailjet.connect(settings.apiKey, settings.apiSecret, { ...settings.options }); //eslint-disable-line
+      this.mailjet = Mailjet.apiConnect(
+        settings.apiKey,
+        settings.apiSecret,
+        {
+          config: {},
+          options: { ...settings.options }
+        } 
+      );
     }
     // No options given
     else {
-      this.mailjet = Mailjet.connect(settings.apiKey, settings.apiSecret); //eslint-disable-line
+      this.mailjet = Mailjet.apiConnect(
+        settings.apiKey,
+        settings.apiSecret,
+        {
+          config: {},
+          options: { ...settings.options }
+        } 
+      );
+      this.mailjet = new Mailjet({
+        apiKey: settings.apiKey,
+        apiSecret: settings.apiSecret
+      });
     }
   }
 };
@@ -47,7 +65,7 @@ Mailer.send = function (emailData, cb) { // eslint-disable-line
   assert(connector, 'Cannot send mail without a connector!');
 
   if (connector.mailjet) {
-    connector.mailjet.post('send').request(emailData)
+    connector.mailjet.post('send', { version: 'v3.1' }).request(emailData)
       .then(result => {
         log(result.body);
         fn(null, result.body);
