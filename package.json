@@ -1,7 +1,7 @@
 {
   "name": "loopback-connector-mailjet_v3.1",
   "version": "0.0.3",
-  "description": "Loopback connector module which allow to send emails via Mailjet__v3.1",
+  "description": "Loopback connector module which allows to send emails via Mailjet__v3.1",
   "main": "index.js",
   "keywords": [
     "loopback",
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "assert": "^1.4.1",
-    "node-mailjet": "^3.3.1",
+    "node-mailjet": "^6.0.4",
     "q": "^1.5.1"
   },
   "devDependencies": {
